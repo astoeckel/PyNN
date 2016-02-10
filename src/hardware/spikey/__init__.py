@@ -1049,7 +1049,7 @@ def set(cells, cellclass, param, val=None):
     global _neuronsChanged
     global _inputChanged
 
-    if val:
+    if not val is None:
         param = {param: val}
     if type(cells) != types.ListType:
         cells = [cells]
