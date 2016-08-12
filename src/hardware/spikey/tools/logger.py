@@ -5,7 +5,6 @@ filenameLogger = ''
 
 
 def loggerInit():
-    pylog.reset()
     layout = pylog.ColorLayout(True, 'ABSOLUTE')
     appenderConsole = pylog.ConsoleAppender(layout)
     appenderConsole.setOption("target", pylog.ConsoleAppender.getSystemErr())
