@@ -1,3 +1,4 @@
+import logging
 import pylogging as pylog
 
 appenderFile = None
@@ -5,13 +6,13 @@ filenameLogger = ''
 
 
 def loggerInit():
+    # Connect pylogging to the Python logging module
     pylog.reset()
-    layout = pylog.ColorLayout(True, 'ABSOLUTE')
-    appenderConsole = pylog.ConsoleAppender(layout)
-    appenderConsole.setOption("target", pylog.ConsoleAppender.getSystemErr())
-    appenderConsole.activateOptions()
-    logger = pylog.get_root()
-    logger.addAppender(appenderConsole)
+    pylog.append_to_logging("PyNN")
+
+    # Log levels are already controled in the C++ code
+    # so use a low log level in the Python backend
+    logging.getLogger("PyNN").setLevel(0)
 
 
 def loggerAppendFile(filename):
